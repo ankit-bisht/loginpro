@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>LoginApp</title>
+  <base href="/">
+  <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript" src="codebird.js"></script>
+
+  <script type="text/javascript">
+    var cb = new Codebird;
+    //console.log(cb);
+    //cb.setToken("1028602135-UWRHNNvk2zvWZ9nKicuELnOZ0WINNwjIc1U4aFY", "SSQ0T1OjER9bbPwyVACfkg3ArmflJtwmI33nWPHssLnIx");
+    // cb.__call(
+    //     "oauth_accessToken",
+    //     {
+    //         oauth_verifier: parameters.oauth_verifier
+    //     },
+    //     function (reply) {
+    //         cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+
+    //         // if you need to persist the login after page reload,
+    //         // consider storing the token in a cookie or HTML5 local storage
+    //     }
+    // );
+    function abc(){cb.__call(
+    "oauth_requestToken",
+    {oauth_callback: "oob"},
+    function (reply) {
+        // stores it
+        console.log(reply);
+        cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+        // gets the authorize screen URL
+        cb.__call(
+            "oauth_authorize",
+            {},
+            function (auth_url) {
+                console.log(auth_url)
+                window.codebird_auth=window.open(auth_url);
+            }
+        );
+  //       cb.__call(
+  //         "oauth_accessToken",
+  //             {oauth_verifier: document.getElementById("PINFIELD").value},
+  //               function (reply) {
+  //               // store the authenticated token, which may be different from the request token (!)
+  //               cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+
+  //           // if you need to persist the login after page reload,
+  //       // consider storing the token in a cookie or HTML5 local storage
+  //   }
+  // ) ;
+    }
+  )};
+  </script>
+  <meta name="google-signin-client_id" content="">
+</head>
+<body>
+  <app-root>Loading...</app-root>
+  <!--<button onclick="abc()" class="btn btn-lg btn-primary btn-block">
+    Twitter--
+  </button>-->
+</body>
+</html>

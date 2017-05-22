@@ -1,14 +1,18 @@
-<h1>
-  {{title}}
-</h1>
-<button (click)="login()" >
-  Facebook Login
-</button>
-<!-- <button (click)="logininfo()" class="">
-  Get FB info
-</button> -->
-<button (click)="logingoogle()" >
-  Google Login
-</button>
-<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-<!-- <div class="fb-login-button" (click)="login()"></div> -->
+
+  <h2>Login via Facebook</h2>
+<body style="color:darkred" >
+<div><img src={{img}}></div>
+<div>Name: {{fb_name}}</div>
+<div>Email: {{fb_email}}</div>
+<div>Gender: {{fb_gender}}</div>
+<div>No. of Friends: {{no_fri}}</div>
+<div> {{fb_logout}}</div>
+</body>
+  <button (click)="login()"  href="/"
+ class="btn">
+    Login
+  </button>
+  <button (click)="logout()"  href="/"
+ class="btn">
+    Logout
+  </button>

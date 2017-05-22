@@ -1,0 +1,37 @@
+<h1>
+  {{title}}
+</h1>
+<button (click)="login()" class="btn btn-default">
+    FB Login
+  </button>
+
+<button (click)="getLoginStatus()" class="btn btn-default ">
+    Get Name
+</button>
+<!--<button (click)="logout()" class="btn btn-default ">
+    logout
+</button>-->
+<div>  
+  {{img}}
+  {{frnd}}
+</div>  
+<!--<button id="googleBtn">Google Sign-In</button>-->
+
+
+<button (click)="tweetapi()" class="btn btn-default ">
+    Twitter Login
+  </button>
+<button (click)='getdetails(password.value)'class="btn btn-default ">
+  Submit PIN
+  </button>
+<button (click)='getdet()'class="btn btn-default ">
+   Get details
+  </button>  
+<br><input type="password" #password placeholder="Enter PIN">
+  <ul class="list-group">
+  <li class="list-group-item list-group-item-info">{{tweet.name}}</li>
+  <li class="list-group-item list-group-item-info">{{tweet.screen_name}}</li>
+  <li class="list-group-item list-group-item-info">{{tweet.location}}</li>
+  </ul>    
+
+
