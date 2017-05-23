@@ -52,6 +52,7 @@ export class AppComponent {
           this.getFriends();
           this.getProfile();
           this.getEmail();
+          this.fb_logout='';
           var counter=0;
           counter++;
           if(counter=1)
