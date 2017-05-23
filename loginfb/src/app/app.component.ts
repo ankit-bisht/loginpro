@@ -34,15 +34,15 @@ export class AppComponent {
  fb_email:any;
  fb_gender:any;
  img:string;
- fb_logout=' ';
-  /**
-   * Login with minimal permissions. This allows you to see their public profile only.
-   */
+ fb_logout='';
+ postdata='';
+ fb_status='';
+
    login() {
        const loginOptions: LoginOptions = {
          enable_profile_selector: true,
          return_scopes: true,
-         scope: 'public_profile,user_friends,email,pages_show_list'
+         scope: 'publish_actions,public_profile,user_friends,email,pages_show_list'
        };
        this.fb.login(loginOptions)
          .then((res: LoginResponse) => {
@@ -52,10 +52,15 @@ export class AppComponent {
           this.getFriends();
           this.getProfile();
           this.getEmail();
+          var counter=0;
+          counter++;
+          if(counter=1)
+          {
+            document.getElementById('btn-login').style.visibility = 'hidden';
+            document.getElementById('btn-logout').style.visibility = 'visible';
+            document.getElementById('inp-login').style.visibility = 'visible';
+          }
          })
-         .catch(this.handleError);
-        // this.getLoginStatus();
-
      }
 
 
@@ -90,10 +95,27 @@ export class AppComponent {
     .catch(this.handleError);
   }
 
+    post(postdata)
+  {
+   console.log(postdata)
+   this.fb.api("/me/feed","post",{"message": postdata})
+   .then((res)=>{
+     console.log(res);
+     this.fb_status='Status Posted Successfully';
+   })
+  }
+
   logout(){
     this.fb.logout();
-    console.log('logged out');
     this.fb_logout='Logged Out Successfully';
+    var counter=0;
+    counter++;
+    if(counter=1)
+    {
+      document.getElementById('btn-login').style.visibility = 'visible';
+      document.getElementById('inp-login').style.visibility = 'hidden';
+      document.getElementById('btn-logout').style.visibility = 'hidden';
+    }
     }
 
   private handleError(error) {

@@ -1,18 +1,22 @@
 
   <h2>Login via Facebook</h2>
-<body style="color:darkred" >
+<body id="inp-login" style="color:red;visibility:hidden">
 <div><img src={{img}}></div>
+<div><input #postdata type="text" placeholder="Whats in your mind?" ></div>
+<div><button (click)="post(postdata.value)" class="btn">Post</button></div>
+<div>{{fb_status}}</div>
 <div>Name: {{fb_name}}</div>
 <div>Email: {{fb_email}}</div>
 <div>Gender: {{fb_gender}}</div>
 <div>No. of Friends: {{no_fri}}</div>
 <div> {{fb_logout}}</div>
+
 </body>
   <button (click)="login()"  href="/"
- class="btn">
+ class="btn" id="btn-login">
     Login
   </button>
   <button (click)="logout()"  href="/"
- class="btn">
+ class="btn" id="btn-logout" style="visibility:hidden">
     Logout
   </button>
