@@ -37,7 +37,7 @@ export class AppComponent {
  fb_logout='';
  postdata='';
  fb_status='';
-
+ no_post:any;
    login() {
        const loginOptions: LoginOptions = {
          enable_profile_selector: true,
@@ -52,6 +52,7 @@ export class AppComponent {
           this.getFriends();
           this.getProfile();
           this.getEmail();
+          this.getFeed();
           this.fb_logout='';
           var counter=0;
           counter++;
@@ -94,6 +95,14 @@ export class AppComponent {
 
     })
     .catch(this.handleError);
+  }
+
+  getFeed(){
+  this.fb.api('/me/feed')
+      .then((res:any) => {
+         console.log('Total Post', res.data);
+        this.no_post=res.data.length;
+    })
   }
 
     post(postdata)
